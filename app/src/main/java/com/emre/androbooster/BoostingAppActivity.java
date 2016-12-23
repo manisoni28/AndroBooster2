@@ -1,5 +1,6 @@
 package com.emre.androbooster;
 
+import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
@@ -14,7 +15,7 @@ import com.stericson.RootTools.RootTools;
  * Created by ogrenci on 23.12.2016.
  */
 
-public class BoostingAppActivity extends AppCompatActivity {
+public class BoostingAppActivity extends Activity {
 
     PackageManager packageManager;
     Context context;
