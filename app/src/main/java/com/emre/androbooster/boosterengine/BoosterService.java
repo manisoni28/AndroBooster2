@@ -123,7 +123,7 @@ public class BoosterService extends Service{
                     }
                 }
             }
-        },0,1000);
+        },0,2000);
 
 
     }

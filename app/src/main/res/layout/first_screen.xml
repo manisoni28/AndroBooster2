@@ -2,14 +2,15 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:ads="http://schemas.android.com/tools">
 
     <com.dd.CircularProgressButton
         android:id="@+id/go_clear_cache"
         android:layout_width="240dp"
         android:layout_height="50dp"
         app:cpb_cornerRadius="7dp"
-        app:cpb_selectorIdle="@drawable/cache_selector"
+        app:cpb_selectorIdle="@drawable/ccache_buton"
         app:cpb_iconComplete="@mipmap/ic_action_accept"
         app:cpb_iconError="@mipmap/ic_action_cancel"
         app:cpb_textIdle="Clear cache"
@@ -37,5 +38,16 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-5942424100141990/1398657069"
+        android:layout_below="@+id/go_clear_cache"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="57dp">
+
+    </com.google.android.gms.ads.AdView>
 
 </RelativeLayout>

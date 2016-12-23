@@ -1,6 +1,7 @@
 package com.emre.androbooster;
 
 import android.app.Activity;
+import android.app.NotificationManager;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -12,13 +13,11 @@ import java.io.IOException;
  * Created by emre on 25.04.2016.
  */
 public class NotificationActivity extends Activity{
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        stop();
-        finish();
+    public void closeNotif() {
+        NotificationManager notificationManager = (NotificationManager) this.getSystemService(NOTIFICATION_SERVICE);
+        notificationManager.cancelAll();
     }
-    public void stop() {
+    private void stop() {
         Intent intent = new Intent(this,BoosterService.class);
         stopService(intent);
         TerminalCommand.command("start mpdecision");
@@ -27,5 +26,12 @@ public class NotificationActivity extends Activity{
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        stop();
+        closeNotif();
+        finish();
     }
 }
