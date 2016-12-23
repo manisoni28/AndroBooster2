@@ -1,11 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:text="TextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView3" />
-</LinearLayout>
+
+    <com.dd.CircularProgressButton
+        android:id="@+id/high_mode"
+        android:layout_height="50dp"
+        app:cpb_cornerRadius="7dp"
+        app:cpb_selectorIdle="@drawable/b_selector"
+        app:cpb_iconComplete="@mipmap/ic_action_accept"
+        app:cpb_iconError="@mipmap/ic_action_cancel"
+        app:cpb_textIdle="HIGH BOOST MODE"
+        app:cpb_colorIndicator="#02CF04"
+        android:textColor="#ffffff"
+        android:layout_gravity="bottom|end"
+        android:layout_width="245dp"
+        android:layout_marginTop="47dp"
+        android:layout_below="@+id/ultra_game_mode"
+        android:layout_alignLeft="@+id/ultra_game_mode"
+        android:layout_alignStart="@+id/ultra_game_mode" />
+
+
+    <com.dd.CircularProgressButton
+        android:id="@+id/no_boost"
+        android:layout_height="50dp"
+        app:cpb_cornerRadius="7dp"
+        app:cpb_selectorIdle="@drawable/c_selector"
+        app:cpb_iconComplete="@mipmap/ic_action_accept"
+        app:cpb_iconError="@mipmap/ic_action_cancel"
+        app:cpb_textIdle="NO BOOSTING"
+        app:cpb_colorIndicator="#02CF04"
+        android:textColor="#ffffff"
+        android:layout_gravity="bottom|end"
+        android:layout_width="245dp"
+        android:layout_marginTop="53dp"
+        android:layout_below="@+id/high_mode"
+        android:layout_alignLeft="@+id/high_mode"
+        android:layout_alignStart="@+id/high_mode" />
+
+    <com.dd.CircularProgressButton
+        android:id="@+id/ultra_game_mode"
+        android:layout_height="50dp"
+        app:cpb_cornerRadius="7dp"
+        app:cpb_selectorIdle="@drawable/a_selector"
+        app:cpb_iconComplete="@mipmap/ic_action_accept"
+        app:cpb_iconError="@mipmap/ic_action_cancel"
+        app:cpb_textIdle="ULTRA GAMING MODE"
+        app:cpb_colorIndicator="#02CF04"
+        android:textColor="#ffffff"
+        android:layout_gravity="bottom|end"
+        android:layout_width="245dp"
+        android:layout_marginTop="62dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

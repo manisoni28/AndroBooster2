@@ -41,6 +41,10 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <service
+            android:name=".boosterengine.BoosterService"
+            android:process=":booster_engine"
+            />
         <activity
             android:name=".ClearingCache"
             android:label="@string/app_name"
@@ -61,6 +65,14 @@
             android:name=".BoostingActivity"
             android:theme="@style/Theme.Transparent2">
         <category android:name="android.intent.category.DEFAULT" />
+        </activity>
+        <activity
+            android:name=".NotificationActivity"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Transparent">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
     </application>
 

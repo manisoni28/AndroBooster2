@@ -5,11 +5,12 @@ import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.stericson.RootTools.RootTools;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by ogrenci on 23.12.2016.
@@ -17,9 +18,10 @@ import com.stericson.RootTools.RootTools;
 
 public class BoostingAppActivity extends Activity {
 
-    PackageManager packageManager;
+    private MaterialDialog m;
+    private PackageManager packageManager;
     Context context;
-    GameBooster gameBooster;
+    private GameBooster gameBooster;
     @Override
     protected void onCreate(Bundle n){
         super.onCreate(n);
@@ -28,20 +30,31 @@ public class BoostingAppActivity extends Activity {
         Bundle b = this.getIntent().getExtras();
         String packageName = b.getString("app");
         packageManager = context.getPackageManager();
-        final MaterialDialog m = new MaterialDialog.Builder(this)
-                .title(R.string.app_name)
-                .content(getAppName(packageName)+" " +getString(R.string.boost))
-                .progress(true,100)
-                .progressIndeterminateStyle(false)
-                .show();
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+           m = new MaterialDialog.Builder(this)
+                    .title(R.string.app_name)
+                    .content(getAppName(packageName)+" " +getString(R.string.boost))
+                    .progress(true,100)
+                    .progressIndeterminateStyle(false)
+                    .contentColor(getColor(R.color.black))
+                    .titleColor(getColor(R.color.black))
+                    .show();
+        }else {
+          m = new MaterialDialog.Builder(this)
+                    .title(R.string.app_name)
+                    .content(getAppName(packageName)+" " +getString(R.string.boost))
+                    .progress(true,100)
+                    .contentColor(getResources().getColor(R.color.black))
+                    .titleColor(getResources().getColor(R.color.black))
+                    .progressIndeterminateStyle(false)
+                    .show();
+        }
 
         final Intent intent = packageManager.getLaunchIntentForPackage(packageName);
         try {
-
-
-
-            new java.util.Timer().schedule(
-                    new java.util.TimerTask() {
+            new Timer().schedule(
+                    new TimerTask() {
                         @Override
                         public void run() {
                             runOnUiThread(new Runnable() {
@@ -61,7 +74,7 @@ public class BoostingAppActivity extends Activity {
                             });
                         }
                     },
-                    2100
+                    2200
             );
 
 

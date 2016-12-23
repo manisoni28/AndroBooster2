@@ -6,6 +6,7 @@ package com.emre.androbooster;
 public class ModeScripts {
     public static String[] GAME_MODE_SCRIPT=new String[]{
             "mount -o remount,rw /system",
+            "echo ondemand /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor",
             "echo 11 > /sys/devices/system/cpu/cpufreq/hotplug/up_threshold_multi_core",
             "echo 11 > /sys/devices/system/cpu/cpufreq/hotplug/up_threshold_any_load",
             "echo 11 > /sys/devices/system/cpu/cpufreq/hotplug/up_threshold",
@@ -15,7 +16,7 @@ public class ModeScripts {
             "echo 11 > /sys/devices/system/cpu/cpufreq/ondemand/up_threshold_any_load",
             "echo 11 > /sys/devices/system/cpu/cpufreq/ondemand/up_threshold_multi_core",
             "echo 11 > /sys/devices/system/cpu/cpufreq/ondemand/up_threshold",
-            "echo 4096 > /sys/block/mmcblk0/bdi/read_ahead_kb",
+            "echo 8192 > /sys/block/mmcblk0/bdi/read_ahead_kb",
     };
 
 

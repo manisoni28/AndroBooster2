@@ -3,8 +3,6 @@ package com.emre.androbooster;
 /**
  * Created by ogrenci on 23.12.2016.
  */
-
-import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
@@ -17,8 +15,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import com.afollestad.materialdialogs.MaterialDialog;
-import com.stericson.RootTools.RootTools;
 import java.util.ArrayList;
 import java.util.List;
 
