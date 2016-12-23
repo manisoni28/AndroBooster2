@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#2196F3</color>
+    <color name="colorPrimaryDark">#208ce2</color>
+    <color name="colorAccent">#cfff40</color>
+    <color name="colorFinished">#1174c4</color>
+    <color name="colorUnfinished">#96c4e9</color>
+    <color name="bright_pink">#FF007F</color>
+    <color name="red">#FF0000</color>
+    <color name="orange">#FF7F00</color>
+    <color name="yellow">#FFFF00</color>
+    <color name="chartreuse">#7FFF00</color>
+    <color name="green">#00FF00</color>
+    <color name="spring_green">#00FF7F</color>
+    <color name="cyan">#00FFFF</color>
+    <color name="azure">#007FFF</color>
+    <color name="blue">#0000FF</color>
+    <color name="violet">#7F00FF</color>
+    <color name="magenta">#FF00FF</color>
+    <color name="black">#101010</color>
+    <array name="rainbow">
+        <item>@color/red</item>
+        <item>@color/yellow</item>
+        <item>@color/chartreuse</item>
+        <item>@color/azure</item>
+    </array>
+</resources>

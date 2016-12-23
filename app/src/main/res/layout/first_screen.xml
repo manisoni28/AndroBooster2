@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.dd.CircularProgressButton
+        android:id="@+id/go_clear_cache"
+        android:layout_width="240dp"
+        android:layout_height="50dp"
+        app:cpb_cornerRadius="7dp"
+        app:cpb_selectorIdle="@drawable/cache_selector"
+        app:cpb_iconComplete="@mipmap/ic_action_accept"
+        app:cpb_iconError="@mipmap/ic_action_cancel"
+        app:cpb_textIdle="Clear cache"
+        app:cpb_colorIndicator="#02CF04"
+        android:textColor="#ffffff"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="38dp"
+        android:layout_above="@+id/boost_now"
+        android:layout_alignLeft="@+id/boost_now"
+        android:layout_alignStart="@+id/boost_now" />
+
+    <com.dd.CircularProgressButton
+        android:id="@+id/boost_now"
+        android:layout_width="240dp"
+        android:layout_height="50dp"
+        app:cpb_cornerRadius="7dp"
+        app:cpb_selectorIdle="@drawable/b_selector"
+        app:cpb_iconComplete="@mipmap/ic_action_accept"
+        app:cpb_iconError="@mipmap/ic_action_cancel"
+        app:cpb_textIdle="BOOST NOW"
+        app:cpb_colorIndicator="#02CF04"
+        android:textColor="#ffffff"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="204dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+
+</RelativeLayout>

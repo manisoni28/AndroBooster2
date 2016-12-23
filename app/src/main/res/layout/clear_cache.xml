@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:custom="http://schemas.android.com/tools">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/cToolbar"
+        android:layout_width="match_parent"
+        app:subtitleTextColor="#ffffff"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="10dp"
+        app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:id="@+id/clearCacheStorage"
+        android:visibility="visible"
+        android:textColor="#ffffff"
+        android:src="@drawable/ic_clear_icon"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="43dp"
+        android:layout_marginEnd="43dp"
+        android:layout_marginBottom="52dp" />
+
+
+    <com.github.lzyzsd.circleprogress.ArcProgress
+        android:id="@+id/freeSizeOfStorage"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        custom:arc_progress="55"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/total_size_of_storage"
+        android:id="@+id/total"
+        android:layout_below="@+id/cToolbar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="47dp"
+        android:textIsSelectable="false"
+        android:textSize="15dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/avalaible_size_of_storage"
+        android:id="@+id/empty"
+        android:textIsSelectable="false"
+        android:textSize="15dp"
+        android:layout_below="@+id/total"
+        android:layout_alignRight="@+id/freeSizeOfStorage"
+        android:layout_alignEnd="@+id/freeSizeOfStorage"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/storage_per"
+        android:id="@+id/textView12"
+        android:layout_below="@+id/freeSizeOfStorage"
+        android:layout_alignRight="@+id/empty"
+        android:layout_alignEnd="@+id/empty"
+        android:layout_alignLeft="@+id/freeSizeOfStorage"
+        android:layout_alignStart="@+id/freeSizeOfStorage" />
+
+
+</RelativeLayout>
