@@ -13,7 +13,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * Created by ogrenci on 23.12.2016.
+ * Created by metahex on 23.12.2016.
  */
 
 public class BoostingAppActivity extends Activity {

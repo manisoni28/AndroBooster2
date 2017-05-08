@@ -4,7 +4,6 @@ import android.app.ActivityManager;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
-
 import java.util.List;
 
 /**
@@ -32,7 +31,6 @@ public class RAMBooster {
 
         for (ApplicationInfo packageInfo : packages) {
             if((packageInfo.flags & ApplicationInfo.FLAG_SYSTEM)==1)continue;
-            if(packageInfo.packageName.equals("mypackage")) continue;
             mActivityManager.killBackgroundProcesses(packageInfo.packageName);
         }
     }

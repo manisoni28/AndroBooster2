@@ -8,12 +8,12 @@
 
     <com.dd.CircularProgressButton
         android:id="@+id/high_mode"
-        android:layout_height="50dp"
+        android:layout_height="55dp"
         app:cpb_cornerRadius="7dp"
         app:cpb_selectorIdle="@drawable/b_selector"
         app:cpb_iconComplete="@mipmap/ic_action_accept"
         app:cpb_iconError="@mipmap/ic_action_cancel"
-        app:cpb_textIdle="HIGH BOOST MODE"
+        app:cpb_textIdle="@string/high"
         app:cpb_colorIndicator="#02CF04"
         android:textColor="#ffffff"
         android:layout_gravity="bottom|end"
@@ -26,12 +26,12 @@
 
     <com.dd.CircularProgressButton
         android:id="@+id/no_boost"
-        android:layout_height="50dp"
+        android:layout_height="55dp"
         app:cpb_cornerRadius="7dp"
         app:cpb_selectorIdle="@drawable/c_selector"
         app:cpb_iconComplete="@mipmap/ic_action_accept"
         app:cpb_iconError="@mipmap/ic_action_cancel"
-        app:cpb_textIdle="NO BOOSTING"
+        app:cpb_textIdle="@string/close"
         app:cpb_colorIndicator="#02CF04"
         android:textColor="#ffffff"
         android:layout_gravity="bottom|end"
@@ -43,12 +43,12 @@
 
     <com.dd.CircularProgressButton
         android:id="@+id/ultra_game_mode"
-        android:layout_height="50dp"
+        android:layout_height="55dp"
         app:cpb_cornerRadius="7dp"
         app:cpb_selectorIdle="@drawable/a_selector"
         app:cpb_iconComplete="@mipmap/ic_action_accept"
         app:cpb_iconError="@mipmap/ic_action_cancel"
-        app:cpb_textIdle="ULTRA GAMING MODE"
+        app:cpb_textIdle="@string/game"
         app:cpb_colorIndicator="#02CF04"
         android:textColor="#ffffff"
         android:layout_gravity="bottom|end"
@@ -56,5 +56,22 @@
         android:layout_marginTop="62dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+
+    <com.dd.CircularProgressButton
+        android:id="@+id/ask"
+        android:layout_height="50dp"
+        app:cpb_cornerRadius="7dp"
+        app:cpb_selectorIdle="@drawable/a_selector"
+        app:cpb_iconComplete="@mipmap/ic_action_accept"
+        app:cpb_iconError="@mipmap/ic_action_cancel"
+        app:cpb_textIdle=" ? "
+        app:cpb_colorIndicator="#02CF04"
+        android:textColor="#ffffff"
+        android:layout_gravity="bottom|end"
+        android:layout_marginTop="63dp"
+        android:layout_below="@+id/no_boost"
+        android:layout_alignLeft="@+id/no_boost"
+        android:layout_alignStart="@+id/no_boost"
+        android:layout_width="80dp" />
 
 </RelativeLayout>

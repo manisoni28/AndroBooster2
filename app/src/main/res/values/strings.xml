@@ -1,8 +1,13 @@
 <resources>
-    <string name="app_name">AndroBooster</string>
+    <string name="app_name">CoreBooster</string>
+    <string name="main">Main</string>
+    <string name="dark_theme_string">Dark theme</string>
+    <string name="gamer_theme_string">Gamer theme</string>
     <string name="action_settings">About</string>
     <string name="high">High boost</string>
     <string name="game">Ultra Gaming Mode</string>
+    <string name="UFC">Click for Ultra Fast Charging</string>
+    <string name="UFC_TITLE">Charging</string>
     <string name="smrc">Smart RAM Cleaning</string>
     <string name="sor">Help</string>
     <string name="upsm">Ultra Power Saving Mode</string>
@@ -36,7 +41,7 @@
     <string name="c"> °C</string>
     <string name="o">Okay</string>
     <string name="temp2">Your device temperature is high. We recommend do not use Ultra Gaming mode until it cools down.</string>
-    <string name="boost">Boosting and fixing problems...</string>
+    <string name="boost">Boosting and fixing RAM problems... This can take 5-10 seconds</string>
     <string name="clean"> MB RAM cleaned.</string>
     <string name="no_clean">Şu anda RAM i temizlemeye gerek yok</string>
     <string name="exp_no">All modes has killed.</string>
@@ -58,6 +63,7 @@
     <string name="aaa">Running apps on background</string>
     <string name="aab">Device state: </string>
     <string name="abd">Issues center</string>
+    <string name="charge_notif">Fast charging notification</string>
     <string name="abe">There is no issue !</string>
     <string name="charge_level">Charge level</string>
     <string name="no_need_For_boost">No need for boosting. Your device seems stable.</string>
@@ -70,7 +76,7 @@
     <string name="dis">DISABLE</string>
     <string name="performance_issues">Performance Issue</string>
     <string name="d">DISABLE</string>
-    <string name="extra">EXTRA BOOSTING FEATURES (REQUIRES ROOT)</string>
+    <string name="extra">EXTRA BOOSTING</string>
     <string name="kill_all">KILL ALL</string>
     <string name="hibernate_All">HIBERNATE ALL</string>
     <string name="high_text">High Boost enabled</string>

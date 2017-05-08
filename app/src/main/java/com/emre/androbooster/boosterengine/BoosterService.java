@@ -1,36 +1,35 @@
 package com.emre.androbooster.boosterengine;
 
-import android.app.KeyguardManager;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.AsyncTask;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import com.emre.androbooster.MainActivity;
+import com.emre.androbooster.ModeManager;
 import com.emre.androbooster.ModeScripts;
 import com.emre.androbooster.NotificationActivity;
 import com.emre.androbooster.R;
 import com.emre.androbooster.TerminalCommand;
 import java.io.IOException;
-import java.util.Timer;
-import java.util.TimerTask;
+import com.emre.androbooster.*;
 
 /**
  * Created by emre on 23.04.2016.
  */
 public class BoosterService extends Service{
     Context context = BoosterService.this;
+    ModeManager modeManager;
+	private CPUBoosting cpu;
     int mode = 0;
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        if(intent != null){
-            mode = intent.getIntExtra("mode",0);
-        }
-        notif();
         return START_NOT_STICKY;
     }
     public void createNotification(Context context, String text) {
@@ -49,20 +48,16 @@ public class BoosterService extends Service{
         noti.flags |= Notification.FLAG_AUTO_CANCEL;
         notificationManager.notify(12, noti);
     }
-
     public void closeNotif() {
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(NOTIFICATION_SERVICE);
         notificationManager.cancelAll();
     }
-
-
     public void perform() {
                 if (mode==2) {
-                    Log.d("Game","mode");
+                 //   Log.d("Game","mode");
                         TerminalCommand.command("stop mpdecision");
-                        TerminalCommand.command("echo 1 > /sys/devices/system/cpu/cpu1/online");
-                        TerminalCommand.command("echo 1 > /sys/devices/system/cpu/cpu2/online");
-                        TerminalCommand.command("echo 1 > /sys/devices/system/cpu/cpu3/online");
+                        ChangeCPUState.onlineAllCPUs(); 
+						cpu.setUltraGamingMode();
                     try {
                         TerminalCommand.RunAsRoot(ModeScripts.GAME_MODE_SCRIPT);
                     } catch (IOException e) {
@@ -72,13 +67,17 @@ public class BoosterService extends Service{
                 if (mode==1) {
                     try {
                         TerminalCommand.RunAsRoot(ModeScripts.HIGH_MODE_SCRIPT);
+						cpu.setHighMode();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                 }
+        		if (mode==0) {
+           				stop();
+        		}
     }
     void notif(){
-        Log.d("notify","");
+        //Log.d("notify","");
         if (mode==2){
             createNotification(context, getString(R.string.ultra_text));
         }
@@ -87,54 +86,90 @@ public class BoosterService extends Service{
         }
     }
     public void stop() {
-        TerminalCommand.command("start mpdecision");
+        modeManager.saveMode(0);
+		cpu.setDefault();
         try {
             TerminalCommand.RunAsRoot(ModeScripts.DEFAULT);
+			TerminalCommand.command("start mpdecision");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-    boolean isApplied = false;
-    Timer zamanlayıcı;
-    KeyguardManager km;
+    IntentFilter screenStateFilter = new IntentFilter();
+    CPUResting cpuResting = new CPUResting();
     @Override
     public void onCreate(){
         super.onCreate();
-        zamanlayıcı = new Timer();
-        zamanlayıcı.scheduleAtFixedRate(new TimerTask() {
-            @Override
-            public void run() {
-                km = (KeyguardManager) getApplicationContext().getSystemService(Context.KEYGUARD_SERVICE);
-              if (!isApplied){
-                  if (!km.inKeyguardRestrictedInputMode()){
-                      perform();
-                      isApplied = true;
-                  }else {
-
-                  }
-              }
-                if (isApplied){
-                    if (km.inKeyguardRestrictedInputMode()){
-                        isApplied = false;
-                        stop();
-                    }else {
-
-                    }
-                }
-            }
-        },0,2000);
-
-
+        modeManager = new ModeManager(this);
+        mode = modeManager.getMode();
+		cpu = new CPUBoosting();
+        if (mode>0){
+            notif();
+        }
+        screenStateFilter.addAction(Intent.ACTION_SCREEN_ON);
+        screenStateFilter.addAction(Intent.ACTION_SCREEN_OFF);
+        registerCPUResting();
+        new DO().execute();
+    }
+    private class DO extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected Void doInBackground(Void... params) {
+            perform();
+            return null;
+        }
+        @Override
+        protected void onCancelled() {
+            super.onCancelled();
+        }
+        @Override
+        protected void onPostExecute(Void result) {
+            super.onPostExecute(result);
+        }
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            super.onProgressUpdate(values);
+        }
+    }
+    private class STOP extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected Void doInBackground(Void... params) {
+            stop();
+            return null;
+        }
+        @Override
+        protected void onCancelled() {
+            super.onCancelled();
+        }
+        @Override
+        protected void onPostExecute(Void result) {
+            super.onPostExecute(result);
+        }
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            super.onProgressUpdate(values);
+        }
+    }
+    private void registerCPUResting(){
+        registerReceiver(cpuResting, screenStateFilter);
+    }
+    private void unregisterCPUResting(){
+        unregisterReceiver(cpuResting);
     }
     @Override
     public void onDestroy(){
         super.onDestroy();
-        zamanlayıcı.cancel();
         closeNotif();
-        stop();
+        unregisterCPUResting();
+        new STOP().execute();
     }
-
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {

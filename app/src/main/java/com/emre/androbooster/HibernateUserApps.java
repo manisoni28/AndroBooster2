@@ -5,9 +5,7 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.util.Log;
-
 import com.stericson.RootTools.RootTools;
-
 import java.util.List;
 
 /**
@@ -49,7 +47,7 @@ public class HibernateUserApps {
                                                 if (!rsi.service.getPackageName().equals("com.android.providers.media")) {
                                                     Hibernater.ForceStopPackage(rsi.service.getPackageName());
                                                     RootTools.killProcess(rsi.process);
-                                                    Log.d("appler", rsi.service.getPackageName());
+                                                    //Log.d("appler", rsi.service.getPackageName());
                                                 }
                                         }
                                     }
@@ -107,25 +105,7 @@ public class HibernateUserApps {
                     }
                 }
 
-            }}
-      /*  List<PackageInfo> packages = pkgMgr.getInstalledPackages(0);
-        TerminalCommand.command("su");
-        for (PackageInfo pkgInfo : packages) {
-            if ((pkgInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0){
-                if (!pkgInfo.applicationInfo.packageName.equals("com.emre.ultrapowersave")){
-                    if (!pkgInfo.applicationInfo.packageName.equals(UltraPowerSave.defaultLauncher(context))) {
-                        if (!pkgInfo.applicationInfo.packageName.equals("com.emre.androenergyv2")) {
-                            if (!pkgInfo.applicationInfo.packageName.equals("eu.chainfire.supersu")) {
-                                if (!pkgInfo.applicationInfo.packageName.equals(GetRecentApps.getRecentApps(context))) {
-                                    Hibernater.hibernate(rsi.process);
-                                }
-                            }
-                        }
-                    }
-
-                }
             }
-        }
-        */
+			}
     }
 }

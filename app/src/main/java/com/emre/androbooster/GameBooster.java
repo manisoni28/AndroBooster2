@@ -50,7 +50,7 @@ public class GameBooster {
                                             if (!rsi.service.getPackageName().equals("com.android.providers.media")) {
                                                 Hibernater.ForceStopPackage(rsi.service.getPackageName());
                                                 RootTools.killProcess(rsi.process);
-                                                Log.d("appler", rsi.service.getPackageName());
+                                                //Log.d("appler", rsi.service.getPackageName());
                                             }
                                         }
                                     }

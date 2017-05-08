@@ -1,10 +1,15 @@
 <resources>
-    <string name="app_name">AndroBooster</string>
+    <string name="app_name">Core Hızlandırıcı</string>
     <string name="action_settings">Hakkında</string>
+    <string name="dark_theme_string">Karanlık tema</string>
+    <string name="gamer_theme_string">Gamer teması</string>
     <string name="sorular">-Ultra Oyun Modu: Cihazın tüm işlemci çekirdeklerini son hız çalıştırır. Ağır grafikli oyunlardaki kasma düzeyini minimuma indirir. Depolama aygıtının yazma ve okuma hızını arttırır. \n-Yüksek Hızlandırma Modu: Cihazın aktif olan işlemci çekirdeklerinin frekansını belli bir düzeye kadar yüksek tutar. \nUygulama hızlandırıcı:  seçilen uygulama çalıştırıldığında cihazdaki tüm rami boşaltarak açılan uygulamaya daha çok ram kalmasını sağlar.</string>
     <string name="high">Yüksek hızlandırma (root gerektirir)</string>
     <string name="game">Ultra Oyun modu (root gerektirir)</string>
+    <string name="UFC">Ultra hızlı şarj için tıklayın</string>
+    <string name="UFC_TITLE">Şarj aletine bağlandı</string>
     <string name="pil">Pil koruyucu</string>
+    <string name="main">Ana ekran</string>
     <string name="batteryTemp">Pil sıcaklığı: </string>
     <string name="c"> °C</string>
     <string name="like">Bizi Facebook ta beğen</string>
@@ -29,16 +34,17 @@
     <string name="close">Hızlandırma yok</string>
     <string name="temp">Sıcaklık: </string>
     <string name="add_widget">Widget ekle</string>
-    <string name="boost">Hızlandırılıyor ve sorun çözülüyor...</string>
+    <string name="boost">Hızlandırılıyor ve sorun çözülüyor... Bu biraz sürebilir</string>
     <string name="appwidget_text">Hızlandırıcı</string>
     <string name="clean"> MB RAM temizlendi</string>
     <string name="ccleaned">Önbellek temizleme tamamlandı !</string>
     <string name="no_clean">No need for cleaning RAM</string>
+    <string name="charge_notif">Hızlı şarj bildirimi</string>
     <string name="storage_per">Depolama alanı doluluk yüzdesi</string>
     <string name="ccnoneed">Şu anda ön belleği temizlemeye gerek yok</string>
     <string name="exp_high">Yüksek hızlandırma başladı</string>
     <string name="exp_no">Tüm hızlandırmalar yok edildi</string>
-    <string name="op">Modlar için root izni gerekmektedir fakat cihazınızda root izni yok. Sağ alt köşeden uygulamaları hızlandırabilirsiniz.</string>
+    <string name="op">Modlar için root izni gerekmektedir fakat cihazınızda root izni yok.</string>
     <string name="buy">Özelliği satın al</string>
     <string name="buy3">satın al</string>
     <string name="avail_ram">Boş RAM: </string>
@@ -72,7 +78,7 @@
     <string name="slowwwww">Yavaşlatabilen uygulamalar</string>
     <string name="s">Şimdi başla</string>
     <string name="load">yükleniyor</string>
-    <string name="app">Uygulama &amp; oyun hızlandırıcı</string>
+    <string name="app">Uygulama hızlandırıcı</string>
     <string name="dis">DEVRE DIŞI BIRAK</string>
     <string name="ultra_text">Ultra hızlandırma etkin</string>
     <string name="sicaklik">Sıcaklık: (cihazınız sensöre sahip olamayabilir)</string>

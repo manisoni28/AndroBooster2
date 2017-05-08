@@ -40,6 +40,7 @@
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab_ultra"
+            android:src="@android:drawable/ic_popup_sync"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"

@@ -11,12 +11,16 @@
     <color name="yellow">#FFFF00</color>
     <color name="chartreuse">#7FFF00</color>
     <color name="green">#00FF00</color>
+    <color name="gamer_green">#0cc716</color>
+    <color name="gamer_green_dark">#0daf15</color>
     <color name="spring_green">#00FF7F</color>
     <color name="cyan">#00FFFF</color>
     <color name="azure">#007FFF</color>
     <color name="blue">#0000FF</color>
     <color name="violet">#7F00FF</color>
+    <color name="darkTheme">#FF212121</color>
     <color name="magenta">#FF00FF</color>
+    <color name="white">#FFF</color>
     <color name="black">#101010</color>
     <array name="rainbow">
         <item>@color/red</item>

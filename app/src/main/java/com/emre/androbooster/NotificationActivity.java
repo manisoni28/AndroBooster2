@@ -31,6 +31,12 @@ public class NotificationActivity extends Activity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         stop();
+		new Thread(new Runnable() { 
+				public void run(){  
+					stop();
+				}
+		}).start();
+			
         closeNotif();
         finish();
     }

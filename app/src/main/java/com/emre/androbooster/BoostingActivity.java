@@ -18,7 +18,7 @@ public class BoostingActivity extends Activity {
     HibernateUserApps hibernateUserApps;
     private int pStatus = 0;
     private Handler handler = new Handler();
-    GetSlowingApplications getSlowingApplications;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +26,6 @@ public class BoostingActivity extends Activity {
         notificationManager.cancelAll();
         setContentView(R.layout.boosting_activity);
         hibernateUserApps = new HibernateUserApps(this);
-        getSlowingApplications = new GetSlowingApplications(this);
         arcProgress = (ArcProgress) findViewById(R.id.boosting_progress);
         final ActivityManager.MemoryInfo mi = new ActivityManager.MemoryInfo();
         ActivityManager activityManager = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
@@ -73,9 +72,9 @@ public class BoostingActivity extends Activity {
                         BoostingActivity.this.runOnUiThread(new Runnable() {
                             public void run() {
                                 if (sonuc>1) {
-                                    Toast.makeText(BoostingActivity.this, String.valueOf(sonuc) + " Temizlendi", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(BoostingActivity.this, String.valueOf(sonuc) + " "+ getString(R.string.ram_CLEANED), Toast.LENGTH_LONG).show();
                                 }else if (sonuc<1){
-                                    Toast.makeText(BoostingActivity.this, "No need for cleaning", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(BoostingActivity.this, getString(R.string.no_need_For_boost), Toast.LENGTH_LONG).show();
                                 }
                                 }
                         });
