@@ -128,8 +128,8 @@ public class BoostingModesFragments extends Fragment {
                     high_boost.setProgress(100);
                     simulateSuccessProgress(high_boost);
                 }
-                showAdWhenLoaded(0);
-                mInterstitialAd.loadAd(new AdRequest.Builder().addTestDevice("4b5d467c88b7bd63").addTestDevice("04157df47a383a0c").build());
+           //     showAdWhenLoaded(0);
+             //   mInterstitialAd.loadAd(new AdRequest.Builder().addTestDevice("4b5d467c88b7bd63").addTestDevice("04157df47a383a0c").build());
 
                 if (high_boost.getProgress() == 100) {
                     high_boost.setProgress(0);
