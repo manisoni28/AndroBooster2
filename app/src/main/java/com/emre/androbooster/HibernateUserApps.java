@@ -30,6 +30,16 @@ public class HibernateUserApps {
             return false;
         }
     }
+    String[] packages = {"com.emre.androbooster",
+			 "system",
+			 "cyanogenmod",
+			 "com.android.inputmethod.latin",
+			 "eu.chainfire.supersu",
+			 "com.google.android.gms",
+			 "com.google.android.googlequicksearchbox",
+			 "com.android.providers.media"};
+			 
+	
     public void hibernateApps() {
         ActivityManager am = (ActivityManager)context.getSystemService(context.ACTIVITY_SERVICE);
         List<ActivityManager.RunningServiceInfo> rs = am.getRunningServices(50);
@@ -37,24 +47,15 @@ public class HibernateUserApps {
             ActivityManager.RunningServiceInfo
                     rsi = rs.get(i);
             if (!isSystemApp(rsi.service.getPackageName())){
-                if (!rsi.service.getPackageName().equals("com.emre.androbooster")){
-                    if (!rsi.service.getPackageName().equals("system")) {
-                        if (!rsi.service.getPackageName().contains("cyanogenmod")) {
-                            if (!rsi.service.getPackageName().equals("com.android.inputmethod.latin")) {
-                                if (!rsi.service.getPackageName().equals("eu.chainfire.supersu")) {
-                                    if (!rsi.service.getPackageName().equals("com.google.android.gms")) {
-                                        if (!rsi.service.getPackageName().equals("com.google.android.googlequicksearchbox")) {
-                                                if (!rsi.service.getPackageName().equals("com.android.providers.media")) {
+                if (!Arrays.asList(packages).contains(rsi.service.getPackageName())){
+                   
                                                     Hibernater.ForceStopPackage(rsi.service.getPackageName());
                                                     RootTools.killProcess(rsi.process);
                                                     //Log.d("appler", rsi.service.getPackageName());
-                                                }
-                                        }
-                                    }
-                                }
-                            }
-                            }
+                                                
+                            
                     }
+	    }
             }
 
         }}
