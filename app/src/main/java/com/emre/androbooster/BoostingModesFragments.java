@@ -107,9 +107,7 @@ public class BoostingModesFragments extends Fragment {
                 }
                 if (no_boost.getProgress() == 100) {
                     no_boost.setProgress(0);
-                }   showAdWhenLoaded(0);
-                mInterstitialAd.loadAd(new AdRequest.Builder().addTestDevice("4b5d467c88b7bd63").addTestDevice("04157df47a383a0c").build());
-
+                }  
                 ultra.setProgress(0);
                 modeManager.saveMode(0);
                 high_boost.setProgress(0);
@@ -157,7 +155,7 @@ public class BoostingModesFragments extends Fragment {
                     showAdWhenLoaded(0);
                 }
             }
-        }, (long) (extraDelay + 350));
+        }, (long) (extraDelay + 400));
     }
     public void stop() {
         Intent intent = new Intent(context,BoosterService.class);
