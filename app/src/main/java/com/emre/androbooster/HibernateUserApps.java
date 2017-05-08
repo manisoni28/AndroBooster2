@@ -1,12 +1,11 @@
 package com.emre.androbooster;
 
-import android.app.ActivityManager;
-import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.util.Log;
-import com.stericson.RootTools.RootTools;
-import java.util.List;
+import android.app.*;
+import android.content.*;
+import android.content.pm.*;
+import android.util.*;
+import com.stericson.RootTools.*;
+import java.util.*;
 
 /**
  * Created by Emre2 on 13.7.2016.
@@ -48,17 +47,15 @@ public class HibernateUserApps {
                     rsi = rs.get(i);
             if (!isSystemApp(rsi.service.getPackageName())){
                 if (!Arrays.asList(packages).contains(rsi.service.getPackageName())){
-                   
                                                     Hibernater.ForceStopPackage(rsi.service.getPackageName());
                                                     RootTools.killProcess(rsi.process);
                                                     //Log.d("appler", rsi.service.getPackageName());
-                                                
-                            
+                                               
                     }
 	    }
             }
 
-        }}
+        }
       /*  List<PackageInfo> packages = pkgMgr.getInstalledPackages(0);
         TerminalCommand.command("su");
         for (PackageInfo pkgInfo : packages) {
@@ -78,7 +75,7 @@ public class HibernateUserApps {
             }
         }
         */
-    }
+    
     public void killApps() {
         ActivityManager am = (ActivityManager)context.getSystemService(context.ACTIVITY_SERVICE);
         List<ActivityManager.RunningServiceInfo> rs = am.getRunningServices(50);

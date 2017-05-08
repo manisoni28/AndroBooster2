@@ -9,6 +9,7 @@ import android.util.Log;
 import com.stericson.RootTools.RootTools;
 
 import java.util.List;
+import java.util.*;
 
 /**
  * Created by Emre2 on 13.7.2016.
@@ -32,6 +33,16 @@ public class GameBooster {
             return false;
         }
     }
+	String[] packages = {"com.emre.androbooster",
+		"system",
+		"cyanogenmod",
+		"com.android.inputmethod.latin",
+		"eu.chainfire.supersu",
+		"com.google.android.gms",
+		"com.google.android.googlequicksearchbox",
+		"com.android.providers.media"};
+
+	
     public void boostForGameAndApps() {
         ActivityManager am = (ActivityManager)context.getSystemService(context.ACTIVITY_SERVICE);
         List<ActivityManager.RunningServiceInfo> rs = am.getRunningServices(50);
@@ -39,50 +50,16 @@ public class GameBooster {
             ActivityManager.RunningServiceInfo
                     rsi = rs.get(i);
             if (!isSystemApp(rsi.service.getPackageName())){
-                if (!rsi.service.getPackageName().equals("com.emre.androbooster")){
-                    if (!rsi.service.getPackageName().equals("system")) {
-                        if (!rsi.service.getPackageName().contains("cyanogenmod")) {
-                            if (!rsi.service.getPackageName().equals(GetRecentApps.getRecentApps(context))) {
-                            if (!rsi.service.getPackageName().equals("com.android.inputmethod.latin")) {
-                                if (!rsi.service.getPackageName().equals("eu.chainfire.supersu")) {
-                                    if (!rsi.service.getPackageName().equals("com.google.android.gms")) {
-                                        if (!rsi.service.getPackageName().equals("com.google.android.googlequicksearchbox")) {
-                                            if (!rsi.service.getPackageName().equals("com.android.providers.media")) {
-                                                Hibernater.ForceStopPackage(rsi.service.getPackageName());
+				if (!Arrays.asList(packages).contains(rsi.service.getPackageName())){
+                Hibernater.ForceStopPackage(rsi.service.getPackageName());
                                                 RootTools.killProcess(rsi.process);
                                                 //Log.d("appler", rsi.service.getPackageName());
+												}
                                             }
                                         }
-                                    }
-                                }
-                            }
-                            }
-                        }
-                    }
-                }
-
-            }}
-      /*  List<PackageInfo> packages = pkgMgr.getInstalledPackages(0);
-        TerminalCommand.command("su");
-        for (PackageInfo pkgInfo : packages) {
-            if ((pkgInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0){
-                if (!pkgInfo.applicationInfo.packageName.equals("com.emre.ultrapowersave")){
-                    if (!pkgInfo.applicationInfo.packageName.equals(UltraPowerSave.defaultLauncher(context))) {
-                        if (!pkgInfo.applicationInfo.packageName.equals("com.emre.androenergyv2")) {
-                            if (!pkgInfo.applicationInfo.packageName.equals("eu.chainfire.supersu")) {
-                                if (!pkgInfo.applicationInfo.packageName.equals(GetRecentApps.getRecentApps(context))) {
-                                    Hibernater.hibernate(rsi.process);
-                                }
-                            }
-                        }
-                    }
-
-                }
-            }
-        }
-        */
-        TerminalCommand.command("exit");
-    }
+		TerminalCommand.command("exit");
+     }
+                               
     public void killApps() {
         ActivityManager am = (ActivityManager)context.getSystemService(context.ACTIVITY_SERVICE);
         List<ActivityManager.RunningServiceInfo> rs = am.getRunningServices(50);
@@ -90,47 +67,14 @@ public class GameBooster {
             ActivityManager.RunningServiceInfo
                     rsi = rs.get(i);
             if (!isSystemApp(rsi.service.getPackageName())){
-                if (!rsi.service.getPackageName().equals("com.emre.androbooster")){
-                    if (!rsi.service.getPackageName().equals("system")) {
-                        if (!rsi.service.getPackageName().contains("cyanogenmod")) {
+                if (!Arrays.asList(packages).contains(rsi.service.getPackageName())){
                             if (!rsi.service.getPackageName().equals(GetRecentApps.getRecentApps(context))) {
-                            if (!rsi.service.getPackageName().equals("com.android.inputmethod.latin")) {
-                                if (!rsi.service.getPackageName().equals("eu.chainfire.supersu")) {
-                                    if (!rsi.service.getPackageName().equals("com.google.android.gms")) {
-                                        if (!rsi.service.getPackageName().equals("com.google.android.googlequicksearchbox")) {
-                                            if (!rsi.service.getPackageName().equals("com.android.providers.media")) {
-                                                KillManager.killProcess(rsi.service.getPackageName(), context);
+                          KillManager.killProcess(rsi.service.getPackageName(), context);
                                                 RootTools.killProcess(rsi.process);
-                                                Log.d("appler", rsi.service.getPackageName());
+                                               // Log.d("appler", rsi.service.getPackageName());
                                             }
                                         }
                                     }
-                                }
-                                }
-                            }
-                        }
-                    }
-                }
-
-            }}
-      /*  List<PackageInfo> packages = pkgMgr.getInstalledPackages(0);
-        TerminalCommand.command("su");
-        for (PackageInfo pkgInfo : packages) {
-            if ((pkgInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0){
-                if (!pkgInfo.applicationInfo.packageName.equals("com.emre.ultrapowersave")){
-                    if (!pkgInfo.applicationInfo.packageName.equals(UltraPowerSave.defaultLauncher(context))) {
-                        if (!pkgInfo.applicationInfo.packageName.equals("com.emre.androenergyv2")) {
-                            if (!pkgInfo.applicationInfo.packageName.equals("eu.chainfire.supersu")) {
-                                if (!pkgInfo.applicationInfo.packageName.equals(GetRecentApps.getRecentApps(context))) {
-                                    Hibernater.hibernate(rsi.process);
-                                }
-                            }
-                        }
-                    }
-
-                }
-            }
-        }
-        */
-    }
+								}
+                             }
 }
