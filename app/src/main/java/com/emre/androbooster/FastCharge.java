@@ -1,8 +1,6 @@
 package com.emre.androbooster;
 
 import android.content.Context;
-import android.util.Log;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -26,7 +24,7 @@ public class FastCharge {
             fOut.close();
         }
         catch (Exception e) {
-            Log.e("Hata kodu3", "File write failed: " + e.toString());
+            //Log.e("Hata kodu3", "File write failed: " + e.toString());
         }
     }
     public boolean dontShow() {

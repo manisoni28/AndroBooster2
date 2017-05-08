@@ -117,10 +117,10 @@ public class FirstScreen extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b){
-                    fastCharge.saveState(0);
+                    fastCharge.saveState(1);
                 }
                 if (!b){
-                    fastCharge.saveState(1);
+                    fastCharge.saveState(0);
                 }
             }
         });
