@@ -41,7 +41,7 @@ public class FirstScreen extends Fragment {
           batteryPer.setProgress(level);
         }
     };
-    FastCharge fastCharge;
+    //MainActivity m = new MainActivity();
     private Button facebook;
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
@@ -52,12 +52,8 @@ public class FirstScreen extends Fragment {
         change_color_switch = (SwitchCompat) abc.findViewById(R.id.darh_theme_switch);
         gamer_theme_switch = (SwitchCompat) abc.findViewById(R.id.gamer_theme_switch);
         c_n_s = (SwitchCompat) abc.findViewById(R.id.charge_notif_switch);
-        fastCharge = new FastCharge(context);
-        try {
-             c_n_s.setChecked(fastCharge.dontShow());
-        }catch (Exception e) {
-            fastCharge.saveState(0);
-        }
+        
+        
         boost_now = (CircularProgressButton) abc.findViewById(R.id.boost_now);
         facebook = (Button) abc.findViewById(R.id.face);
 
@@ -111,19 +107,9 @@ public class FirstScreen extends Fragment {
 			gamer_theme_switch.setChecked(themeManager.isGamerTheme());
             
         }catch (Exception e) {
-            fastCharge.saveState(0);
+            
         }
-        c_n_s.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (b){
-                    fastCharge.saveState(1);
-                }
-                if (!b){
-                    fastCharge.saveState(0);
-                }
-            }
-        });
+       
         change_color_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -135,6 +121,7 @@ public class FirstScreen extends Fragment {
                     themeManager.saveColor(0);
                     gamer_theme_switch.setChecked(false);
                 }
+				restartActivity();
             }
         });
         gamer_theme_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -148,10 +135,14 @@ public class FirstScreen extends Fragment {
                     themeManager.saveColor(0);
                     change_color_switch.setChecked(false);
                 }
+				restartActivity();
             }
         });
         return abc;
     }
+	private void restartActivity(){
+		Intent intent =  getActivity().getIntent(); getActivity().finish() ; startActivity(intent);
+	}
     public static Intent getOpenFacebookIntent(Context context) {
 
         try {

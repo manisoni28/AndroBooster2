@@ -44,7 +44,6 @@ public class GetRecentApps {
                     e.printStackTrace();
                 }
             }
-
         }
         return topPackageName;
     }

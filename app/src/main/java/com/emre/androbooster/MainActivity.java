@@ -87,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
                     openUFC();
                 }
             });
+			
 
             tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
                 @Override
@@ -104,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
 
                 }
             });
-        }
+     }
 
     private void showAdWhenLoaded(int extraDelay) {
         new Handler().postDelayed(new Runnable() {

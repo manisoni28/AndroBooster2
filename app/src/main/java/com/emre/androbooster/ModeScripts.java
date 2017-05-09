@@ -47,6 +47,9 @@ public class ModeScripts {
             "echo 20 > /sys/devices/system/cpu/cpufreq/ondemand/up_threshold_multi_core",
             "echo 20 > /sys/devices/system/cpu/cpufreq/ondemand/up_threshold",
 			
+		 	"echo 4096 > /sys/block/mmcblk0/bdi/read_ahead_kb",
+		
+			
             "echo 8192 > /sys/block/mmcblk0/bdi/read_ahead_kb",
     };
 

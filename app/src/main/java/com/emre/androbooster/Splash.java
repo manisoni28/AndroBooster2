@@ -13,17 +13,17 @@ import android.support.v7.app.*;
  */
 public class Splash extends AppCompatActivity {
 	
-    private FastCharge fastCharge;
+    
     private ThemeManager themeManager;
   
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     setContentView(R.layout.splash);
-        fastCharge = new FastCharge(Splash.this);
+       
    
         themeManager = new ThemeManager(Splash.this);
-        fastCharge.saveState(0);
+        
         themeManager.saveColor(0);
       
         SharedPreferences sharedPrefs = getSharedPreferences("buy", MODE_PRIVATE);

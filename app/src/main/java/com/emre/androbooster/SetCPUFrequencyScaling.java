@@ -26,11 +26,11 @@ public class SetCPUFrequencyScaling {
 					String bin = String.valueOf(a);
 						String ab = "chmod 777 /sys/devices/system/cpu/cpu" + bin + "/cpufreq/scaling_max_freq";
 						String ac = "chmod 777 /sys/devices/system/cpu/cpu" + bin + "/cpufreq/scaling_min_freq";
-						String ad = "chmod 777 /sys/devices/system/cpu/cpu" + bin + "/cpufreq/scaling_min_freq";
+						//String ad = "chmod 777 /sys/devices/system/cpu/cpu" + bin + "/cpufreq/scaling_min_freq";
 						String a1 = "chmod 777 /sys/devices/system/cpu/cpu" + bin + "/online";
 						String ae = "echo " + maxFreq + " > /sys/devices/system/cpu/cpu" + bin + "/cpufreq/scaling_max_freq";
 						String af = "echo " + minFreq + " > /sys/devices/system/cpu/cpu" + bin + "/cpufreq/scaling_min_freq";
-						String[] abc = {ab,ac,ad,ae,af,a1};
+						String[] abc = {ab,ac,ae,af,a1};
 						try
 						{
 							TerminalCommand.RunAsRoot(abc);

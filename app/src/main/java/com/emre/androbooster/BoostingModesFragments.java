@@ -30,14 +30,20 @@ public class BoostingModesFragments extends Fragment {
 
     Context context;
     private MaterialDialog m;
+	private CPUBoosting cpu;
     CircularProgressButton ultra,no_boost,high_boost,ask;
+	private DefaultFreqs d;
     private ModeManager modeManager;
     private InterstitialAd mInterstitialAd;
+	
+	
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View abc =  inflater.inflate(R.layout.booster_modes, container, false);
         context = getActivity();
+		d = new DefaultFreqs(context);
         modeManager = new ModeManager(context);
+		cpu = new CPUBoosting(context);
         ultra = (CircularProgressButton) abc.findViewById(R.id.ultra_game_mode);
         ask = (CircularProgressButton) abc.findViewById(R.id.ask);
         high_boost = (CircularProgressButton) abc.findViewById(R.id.high_mode);
@@ -73,6 +79,7 @@ public class BoostingModesFragments extends Fragment {
             @Override
             public void onClick(View view) {
                 if (RootTools.isAccessGiven()){
+					saveDefaultFreqs();
                     if (ultra.getProgress() == 0) {
                         ultra.setProgress(50);
                     }
@@ -98,6 +105,7 @@ public class BoostingModesFragments extends Fragment {
             @Override
             public void onClick(View view) {
                 if (RootTools.isAccessGiven()){
+					
                 if (no_boost.getProgress() == 0) {
                     no_boost.setProgress(50);
                 }
@@ -121,6 +129,7 @@ public class BoostingModesFragments extends Fragment {
             @Override
             public void onClick(View view) {
                 if (RootTools.isAccessGiven()){
+					saveDefaultFreqs();
                 if (high_boost.getProgress() == 0) {
                     high_boost.setProgress(50);
                 }
@@ -146,6 +155,7 @@ public class BoostingModesFragments extends Fragment {
 
         return abc;
     }
+	
     private void showAdWhenLoaded(int extraDelay) {
         new Handler().postDelayed(new Runnable() {
             public void run() {
@@ -162,6 +172,7 @@ public class BoostingModesFragments extends Fragment {
         context.stopService(intent);
         TerminalCommand.command("start mpdecision");
         try {
+			cpu.setDefault();
             TerminalCommand.RunAsRoot(ModeScripts.DEFAULT);
         } catch (IOException e) {
             e.printStackTrace();
@@ -181,6 +192,10 @@ public class BoostingModesFragments extends Fragment {
         });
         widthAnimation.start();
     }
+	private void saveDefaultFreqs(){
+		d.saveDefaultMinFreq(d.defaultMinFreq());
+		d.saveDefaultMaxFreq(d.defaultMaxFreq());
+	}
     private void startBoosting(int boost_mode){
         Intent intent = new Intent(context,BoosterService.class);
         if (boost_mode==0){

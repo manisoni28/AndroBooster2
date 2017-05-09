@@ -1,16 +1,12 @@
 package com.emre.androbooster;
 
-import android.app.Activity;
-import android.content.ActivityNotFoundException;
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.os.Build;
-import android.os.Bundle;
-import com.afollestad.materialdialogs.MaterialDialog;
-import com.stericson.RootTools.RootTools;
-import java.util.Timer;
-import java.util.TimerTask;
+import android.app.*;
+import android.content.*;
+import android.content.pm.*;
+import android.os.*;
+import com.afollestad.materialdialogs.*;
+import com.stericson.RootTools.*;
+import java.util.*;
 
 /**
  * Created by metahex on 23.12.2016.
@@ -22,6 +18,7 @@ public class BoostingAppActivity extends Activity {
     private PackageManager packageManager;
     Context context;
     private GameBooster gameBooster;
+	
     @Override
     protected void onCreate(Bundle n){
         super.onCreate(n);
@@ -57,6 +54,7 @@ public class BoostingAppActivity extends Activity {
                     new TimerTask() {
                         @Override
                         public void run() {
+							toggleSync(false);
                             runOnUiThread(new Runnable() {
                                 public void run() {
                                     RAMBooster.cleanAllActivities(context);
@@ -84,6 +82,9 @@ public class BoostingAppActivity extends Activity {
 
         }
     }
+	private void toggleSync(boolean enable){
+		ContentResolver.setMasterSyncAutomatically(enable);
+	}
     public String getAppName(String packagename){
         String appName = null;
         final String packageName = packagename;

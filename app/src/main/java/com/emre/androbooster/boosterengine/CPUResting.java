@@ -57,7 +57,7 @@ public class CPUResting extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         modeManager = new ModeManager(context);
-		cpu = new CPUBoosting();
+		cpu = new CPUBoosting(context);
         if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
             //Log.i("Check","Screen went OFF");
             new STOP().execute();

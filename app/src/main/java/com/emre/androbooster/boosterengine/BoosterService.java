@@ -10,15 +10,14 @@ import android.content.IntentFilter;
 import android.os.AsyncTask;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import com.emre.androbooster.MainActivity;
 import com.emre.androbooster.ModeManager;
 import com.emre.androbooster.ModeScripts;
 import com.emre.androbooster.NotificationActivity;
 import com.emre.androbooster.R;
 import com.emre.androbooster.TerminalCommand;
+import com.emre.androbooster.CPUBoosting;
 import java.io.IOException;
-import com.emre.androbooster.*;
 
 /**
  * Created by emre on 23.04.2016.
@@ -102,7 +101,7 @@ public class BoosterService extends Service{
         super.onCreate();
         modeManager = new ModeManager(this);
         mode = modeManager.getMode();
-		cpu = new CPUBoosting();
+		cpu = new CPUBoosting(this);
         if (mode>0){
             notif();
         }
