@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import com.emre.androbooster.ApplicationAdapter;
@@ -36,7 +35,7 @@ public class CPUResting extends BroadcastReceiver {
     }
     public void perform(int mode) {
         if (mode==2) {
-            Log.d("Game","mode");
+           // Log.d("Game","mode");
             ChangeCPUState.onlineAllCPUs();
 			cpu.setUltraGamingMode();
             try {

@@ -7,8 +7,8 @@ android {
         applicationId "com.emre.androbooster"
         minSdkVersion 16
         targetSdkVersion 25
-        versionCode 2047
-        versionName "2.4.7"
+        versionCode 2049
+        versionName "2.4.9"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

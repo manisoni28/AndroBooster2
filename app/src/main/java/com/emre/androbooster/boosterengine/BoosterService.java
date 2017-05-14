@@ -18,6 +18,7 @@ import com.emre.androbooster.R;
 import com.emre.androbooster.TerminalCommand;
 import com.emre.androbooster.CPUBoosting;
 import java.io.IOException;
+import com.emre.androbooster.*;
 
 /**
  * Created by emre on 23.04.2016.
@@ -25,6 +26,8 @@ import java.io.IOException;
 public class BoosterService extends Service{
     Context context = BoosterService.this;
     ModeManager modeManager;
+	//boolean abcd = false;
+	CPUCores cpuCores;
 	private CPUBoosting cpu;
     int mode = 0;
     @Override
@@ -57,6 +60,10 @@ public class BoosterService extends Service{
                         TerminalCommand.command("stop mpdecision");
                         ChangeCPUState.onlineAllCPUs(); 
 						cpu.setUltraGamingMode();
+						/*if(abcd){
+							SyncManagement.toggleSync(false);
+						}*/
+						
                     try {
                         TerminalCommand.RunAsRoot(ModeScripts.GAME_MODE_SCRIPT);
                     } catch (IOException e) {
@@ -64,6 +71,9 @@ public class BoosterService extends Service{
                     }
                 }
                 if (mode==1) {
+					/*if(abcd){
+					 SyncManagement.toggleSync(false);
+					 }*/
                     try {
                         TerminalCommand.RunAsRoot(ModeScripts.HIGH_MODE_SCRIPT);
 						cpu.setHighMode();
@@ -87,6 +97,9 @@ public class BoosterService extends Service{
     public void stop() {
         modeManager.saveMode(0);
 		cpu.setDefault();
+		/*if(abcd){
+		 SyncManagement.toggleSync(false);
+		 }*/
         try {
             TerminalCommand.RunAsRoot(ModeScripts.DEFAULT);
 			TerminalCommand.command("start mpdecision");
@@ -100,8 +113,10 @@ public class BoosterService extends Service{
     public void onCreate(){
         super.onCreate();
         modeManager = new ModeManager(this);
+		cpuCores = new CPUCores();
         mode = modeManager.getMode();
 		cpu = new CPUBoosting(this);
+		//abcd = cpuCores.getNumberOfCores()<3;
         if (mode>0){
             notif();
         }

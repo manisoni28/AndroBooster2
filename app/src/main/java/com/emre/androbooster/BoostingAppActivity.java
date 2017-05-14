@@ -7,6 +7,7 @@ import android.os.*;
 import com.afollestad.materialdialogs.*;
 import com.stericson.RootTools.*;
 import java.util.*;
+//importcom.emre.androbooster.SyncManagement;
 
 /**
  * Created by metahex on 23.12.2016.
@@ -50,11 +51,11 @@ public class BoostingAppActivity extends Activity {
 
         final Intent intent = packageManager.getLaunchIntentForPackage(packageName);
         try {
+			SyncManagement.toggleSync(false);
             new Timer().schedule(
                     new TimerTask() {
                         @Override
                         public void run() {
-							toggleSync(false);
                             runOnUiThread(new Runnable() {
                                 public void run() {
                                     RAMBooster.cleanAllActivities(context);
@@ -76,15 +77,11 @@ public class BoostingAppActivity extends Activity {
             );
 
 
-        } catch (ActivityNotFoundException e) {
+        } catch (Exception a) {
 
-        } catch (Exception e) {
-
-        }
+        } 
     }
-	private void toggleSync(boolean enable){
-		ContentResolver.setMasterSyncAutomatically(enable);
-	}
+	
     public String getAppName(String packagename){
         String appName = null;
         final String packageName = packagename;

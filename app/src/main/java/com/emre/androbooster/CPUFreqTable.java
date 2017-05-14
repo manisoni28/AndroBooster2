@@ -5,15 +5,83 @@ import java.util.*;
 
 /**
  * Created by ogrenci on 5.05.2017.
+ * Alkollü iken yazılan kodlar
  */
 
 public class CPUFreqTable {
     static String PATH_OF_FREQ_TABLE = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies";
+	static String PATH_OF_MAX_FREQ = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq";
+	static String PATH_OF_MIN_FREQ = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq";
+	public boolean isCompatibleForFreqTableAlgorithm(){
+		File a = new File(PATH_OF_FREQ_TABLE);
+		return a.exists();
+	}
+	
+	public String pseudoFreqTable(){
+		return abcde_min() + abcde_max() + abcde_max() + abcde_max();
+	}
+
+	public String abcde_max() {
+		File file = new File(PATH_OF_MAX_FREQ);
+		StringBuilder freqTable = null;
+		if(file.exists()){
+			freqTable = new StringBuilder();
+
+			try {
+				BufferedReader br = new BufferedReader(new FileReader(file));
+				String line;
+
+				while ((line = br.readLine()) != null) {
+					freqTable.append(line);
+					//freqTable.append("\n");
+				}
+
+				br.close();
+			} catch (Exception e) {
+
+			}
+		}else {
+
+		}
+
+		return freqTable.toString();
+
+    }
+
+	public String abcde_min() {
+		File file = new File(PATH_OF_MIN_FREQ);
+		StringBuilder freqTable = null;
+		if(file.exists()){
+			freqTable = new StringBuilder();
+
+			try {
+				BufferedReader br = new BufferedReader(new FileReader(file));
+				String line;
+
+				while ((line = br.readLine()) != null) {
+					freqTable.append(line);
+					//freqTable.append("\n");
+				}
+
+				br.close();
+			} catch (Exception e) {
+
+			}
+		}else {
+
+		}
+
+		return freqTable.toString();
+
+    }
 	
 	
     public String[] getFreqTableAsString() {
        File file = new File(PATH_OF_FREQ_TABLE);
-        StringBuilder freqTable = new StringBuilder();
+	   String real_result = null;
+		StringBuilder freqTable = null;
+	   if(file.exists()){
+		   freqTable = new StringBuilder();
 
         try {
             BufferedReader br = new BufferedReader(new FileReader(file));
@@ -25,13 +93,20 @@ public class CPUFreqTable {
             }
 
             br.close();
+			
+			real_result = freqTable.toString();
         } catch (Exception e) {
 
         }
+		}else {
+			real_result = pseudoFreqTable();
+		}
 			
-       return freqTable.toString().split(" ");
+       return real_result.split(" ");
 	 
     }
+	
+	
 	public int[] getFreqTable(){
 		int[] abcd = StringArrToIntArr(getFreqTableAsString());
 		Arrays.sort(abcd);

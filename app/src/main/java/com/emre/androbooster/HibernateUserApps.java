@@ -18,17 +18,17 @@ public class HibernateUserApps {
         pkgMgr = context.getPackageManager();
     }
     public boolean isSystemApp(String packageName) {
-        try {
-            PackageInfo targetPkgInfo = pkgMgr.getPackageInfo(
-                    packageName, PackageManager.GET_SIGNATURES);
-            PackageInfo sys = pkgMgr.getPackageInfo(
-                    "android", PackageManager.GET_SIGNATURES);
-            return (targetPkgInfo != null && targetPkgInfo.signatures != null && sys.signatures[0]
-                    .equals(targetPkgInfo.signatures[0]));
-        } catch (PackageManager.NameNotFoundException e) {
-            return false;
-        }
-    }
+		ApplicationInfo app = null;
+		try
+		{
+			app = pkgMgr.getApplicationInfo(packageName, 0);
+		}
+		catch (PackageManager.NameNotFoundException e)
+		{
+
+		}        
+		return !app.sourceDir.startsWith("/data/app/");
+	}
     String[] packages = {"com.emre.androbooster",
 			 "system",
 			 "cyanogenmod",
@@ -43,38 +43,25 @@ public class HibernateUserApps {
         ActivityManager am = (ActivityManager)context.getSystemService(context.ACTIVITY_SERVICE);
         List<ActivityManager.RunningServiceInfo> rs = am.getRunningServices(50);
         for (int i=0; i<rs.size(); i++) {
-            ActivityManager.RunningServiceInfo
+            final ActivityManager.RunningServiceInfo
                     rsi = rs.get(i);
             if (!isSystemApp(rsi.service.getPackageName())){
                 if (!Arrays.asList(packages).contains(rsi.service.getPackageName())){
-                                                    Hibernater.ForceStopPackage(rsi.service.getPackageName());
-                                                    RootTools.killProcess(rsi.process);
-                                                    //Log.d("appler", rsi.service.getPackageName());
+					new Thread(new Runnable() {
+							@Override
+							public void run() {
+								RootTools.killProcess(rsi.process);
+								Hibernater.ForceStopPackage(rsi.service.getPackageName());
+
+							}
+						}).start();
                                                
                     }
 	    }
             }
 
         }
-      /*  List<PackageInfo> packages = pkgMgr.getInstalledPackages(0);
-        TerminalCommand.command("su");
-        for (PackageInfo pkgInfo : packages) {
-            if ((pkgInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0){
-                if (!pkgInfo.applicationInfo.packageName.equals("com.emre.ultrapowersave")){
-                    if (!pkgInfo.applicationInfo.packageName.equals(UltraPowerSave.defaultLauncher(context))) {
-                        if (!pkgInfo.applicationInfo.packageName.equals("com.emre.androenergyv2")) {
-                            if (!pkgInfo.applicationInfo.packageName.equals("eu.chainfire.supersu")) {
-                                if (!pkgInfo.applicationInfo.packageName.equals(GetRecentApps.getRecentApps(context))) {
-                                    Hibernater.hibernate(rsi.process);
-                                }
-                            }
-                        }
-                    }
 
-                }
-            }
-        }
-        */
     
     public void killApps() {
         ActivityManager am = (ActivityManager)context.getSystemService(context.ACTIVITY_SERVICE);
@@ -83,27 +70,13 @@ public class HibernateUserApps {
             ActivityManager.RunningServiceInfo
                     rsi = rs.get(i);
             if (!isSystemApp(rsi.service.getPackageName())){
-                if (!rsi.service.getPackageName().equals("com.emre.androbooster")){
-                    if (!rsi.service.getPackageName().equals("system")) {
-                        if (!rsi.service.getPackageName().contains("cyanogenmod")) {
-                            if (!rsi.service.getPackageName().equals("com.android.inputmethod.latin")) {
-                                if (!rsi.service.getPackageName().equals("eu.chainfire.supersu")) {
-                                    if (!rsi.service.getPackageName().equals("com.google.android.gms")) {
-                                        if (!rsi.service.getPackageName().equals("com.google.android.googlequicksearchbox")) {
-                                            if (!rsi.service.getPackageName().equals("com.android.providers.media")) {
+				if (!Arrays.asList(packages).contains(rsi.service.getPackageName())){
                                                 KillManager.killProcess(rsi.service.getPackageName(),context);
                                                 RootTools.killProcess(rsi.process);
-                                                Log.d("appler", rsi.service.getPackageName());
+                                            //    Log.d("appler", rsi.service.getPackageName());
                                             }
                                         }
                                     }
-                                }
-                            }
-                        }
-                    }
-                }
-
-            }
-			}
-    }
+                               }
+    
 }

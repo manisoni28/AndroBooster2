@@ -31,11 +31,10 @@ public class BoostingModesFragments extends Fragment {
     Context context;
     private MaterialDialog m;
 	private CPUBoosting cpu;
-    CircularProgressButton ultra,no_boost,high_boost,ask;
+    private CircularProgressButton ultra,no_boost,high_boost,ask;
 	private DefaultFreqs d;
     private ModeManager modeManager;
     private InterstitialAd mInterstitialAd;
-	
 	
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -55,6 +54,7 @@ public class BoostingModesFragments extends Fragment {
                 mInterstitialAd.loadAd(new AdRequest.Builder().addTestDevice("4b5d467c88b7bd63").addTestDevice("04157df47a383a0c").build());
             }
         });
+		
         ask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -75,6 +75,7 @@ public class BoostingModesFragments extends Fragment {
                 }
             }
         });
+		
         ultra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -101,6 +102,7 @@ public class BoostingModesFragments extends Fragment {
                 }
             }
         });
+		
         no_boost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -125,6 +127,7 @@ public class BoostingModesFragments extends Fragment {
                 }
             }
         });
+		
         high_boost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

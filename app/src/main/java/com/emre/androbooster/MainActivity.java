@@ -60,9 +60,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 		
-		
-		//Toast.makeText(MainActivity.this,c.minFrequency(),Toast.LENGTH_LONG).show();
-		
 
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
         showAdWhenLoaded(0);
@@ -84,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    openUFC();
+                    openNetSleep();
                 }
             });
 			
@@ -119,15 +116,15 @@ public class MainActivity extends AppCompatActivity {
         }, (long) (extraDelay + 400));
     }
    
-    private void openUFC() {
-        Intent intent = getPackageManager().getLaunchIntentForPackage("com.emre.sync");
+    private void openNetSleep() {
+        Intent intent = getPackageManager().getLaunchIntentForPackage("com.emre.netsleep");
         if (intent != null) {
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
         } else {
             intent = new Intent(Intent.ACTION_VIEW);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            intent.setData(Uri.parse("market://details?id=" + "com.emre.sync"));
+            intent.setData(Uri.parse("market://details?id=" + "com.emre.netsleep"));
             startActivity(intent);
         }
     }

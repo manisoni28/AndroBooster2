@@ -9,6 +9,7 @@ import java.util.List;
 /**
  * Created by emre on 24.04.2016.
  */
+ 
 public class RAMBooster {
     public static void freeMemory(Context context) {
         ActivityManager activityManager = (ActivityManager) context.getSystemService("activity");
@@ -24,9 +25,7 @@ public class RAMBooster {
         List<ApplicationInfo> packages;
         PackageManager pm;
         pm = context.getPackageManager();
-
         packages = pm.getInstalledApplications(0);
-
         ActivityManager mActivityManager = (ActivityManager)context.getSystemService(Context.ACTIVITY_SERVICE);
 
         for (ApplicationInfo packageInfo : packages) {
