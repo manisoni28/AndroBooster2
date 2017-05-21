@@ -12,16 +12,22 @@ public class CPUFreqTable {
     static String PATH_OF_FREQ_TABLE = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies";
 	static String PATH_OF_MAX_FREQ = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq";
 	static String PATH_OF_MIN_FREQ = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq";
+	
+    public int MIN_FREQ;
+    public int MAX_FREQ = 0;
+	
 	public boolean isCompatibleForFreqTableAlgorithm(){
 		File a = new File(PATH_OF_FREQ_TABLE);
 		return a.exists();
 	}
 	
-	public String pseudoFreqTable(){
+	public String pseudoFreqTable() throws Exception {
+		MIN_FREQ = (getFreqTable().length)-2;
 		return abcde_min() + abcde_max() + abcde_max() + abcde_max();
 	}
 
-	public String abcde_max() {
+	public String abcde_max() throws Exception {
+		MIN_FREQ = (getFreqTable().length)-2;
 		File file = new File(PATH_OF_MAX_FREQ);
 		StringBuilder freqTable = null;
 		if(file.exists()){
@@ -48,7 +54,8 @@ public class CPUFreqTable {
 
     }
 
-	public String abcde_min() {
+	public String abcde_min() throws Exception {
+		MIN_FREQ = (getFreqTable().length)-2;
 		File file = new File(PATH_OF_MIN_FREQ);
 		StringBuilder freqTable = null;
 		if(file.exists()){
@@ -76,7 +83,8 @@ public class CPUFreqTable {
     }
 	
 	
-    public String[] getFreqTableAsString() {
+    public String[] getFreqTableAsString() throws Exception {
+	//MIN_FREQ = (getFreqTable().length)-2;
        File file = new File(PATH_OF_FREQ_TABLE);
 	   String real_result = null;
 		StringBuilder freqTable = null;
@@ -107,7 +115,8 @@ public class CPUFreqTable {
     }
 	
 	
-	public int[] getFreqTable(){
+	public int[] getFreqTable() throws Exception {
+		//MIN_FREQ = (getFreqTable().length)-2;
 		int[] abcd = StringArrToIntArr(getFreqTableAsString());
 		Arrays.sort(abcd);
 		reverse(abcd);
@@ -136,18 +145,19 @@ public class CPUFreqTable {
         }
 	}
 	
-    public int MIN_FREQ = (getFreqTable().length)-2;
-    public int MAX_FREQ = 0;
 	
-	public String maxFrequency(){
+	public String maxFrequency() throws Exception {
+		MIN_FREQ = (getFreqTable().length)-2;
 		return String.valueOf(getFreqTable()[MAX_FREQ]);
 	}
 	
-	public String minFrequency(){
+	public String minFrequency() throws Exception {
+		MIN_FREQ = (getFreqTable().length)-2;
 		return String.valueOf(getFreqTable()[MIN_FREQ]);
 	}
 	
-	public String maxFrequencyForHighBoosting(){
+	public String maxFrequencyForHighBoosting() throws Exception {
+		MIN_FREQ = (getFreqTable().length)-2;
 		return String.valueOf(getFreqTable()[MAX_FREQ+3]);
 	}
 }

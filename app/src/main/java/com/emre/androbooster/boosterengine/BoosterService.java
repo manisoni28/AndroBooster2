@@ -1,7 +1,6 @@
 package com.emre.androbooster.boosterengine;
 
 import android.app.Notification;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
@@ -37,7 +36,7 @@ public class BoosterService extends Service{
     public void createNotification(Context context, String text) {
         Intent intent = new Intent(context, MainActivity.class);
         PendingIntent pIntent = PendingIntent.getActivity(context, (int) System.currentTimeMillis(), intent, 0);
-        NotificationManager notificationManager = (NotificationManager) context.getSystemService(NOTIFICATION_SERVICE);
+     //   NotificationManager notificationManager = (NotificationManager) context.getSystemService(NOTIFICATION_SERVICE);
         Notification noti = null;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN) {
             noti = new Notification.Builder(this)
@@ -47,13 +46,10 @@ public class BoosterService extends Service{
                     .setOngoing(true)
                     .addAction(R.drawable.ic_content_clear, getString(R.string.dis), PendingIntent.getActivity(context,1,new Intent(context, NotificationActivity.class),PendingIntent.FLAG_CANCEL_CURRENT)).build();
         }
-        noti.flags |= Notification.FLAG_AUTO_CANCEL;
-        notificationManager.notify(12, noti);
+        noti.flags |= Notification.FLAG_FOREGROUND_SERVICE;
+        startForeground(13, noti);
     }
-    public void closeNotif() {
-        NotificationManager notificationManager = (NotificationManager) context.getSystemService(NOTIFICATION_SERVICE);
-        notificationManager.cancelAll();
-    }
+    
     public void perform() {
                 if (mode==2) {
                  //   Log.d("Game","mode");
@@ -180,7 +176,6 @@ public class BoosterService extends Service{
     @Override
     public void onDestroy(){
         super.onDestroy();
-        closeNotif();
         unregisterCPUResting();
         new STOP().execute();
     }

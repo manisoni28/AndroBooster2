@@ -7,6 +7,7 @@ import java.util.List;
 /**
  * Created by Emre2 on 26.7.2016.
  */
+ 
 public class KillManager {
     public static void killProcess(String packagename, Context context){
         ActivityManager  manager = (ActivityManager)context.getSystemService(Context.ACTIVITY_SERVICE);

@@ -12,12 +12,22 @@ public class CPUBoosting
 	SetCPUFrequencyScaling s = new SetCPUFrequencyScaling();
 	public void setUltraGamingMode(){
 		if(c.isCompatibleForFreqTableAlgorithm()){
-		s.setFrequencyScaling(c.maxFrequency(),c.maxFrequency());
+			try
+			{
+				s.setFrequencyScaling(c.maxFrequency(), c.maxFrequency());
+			}
+			catch (Exception e)
+			{}
 		}
 	}
 	public void setHighMode(){
 		if(c.isCompatibleForFreqTableAlgorithm()){
-		s.setFrequencyScaling(c.maxFrequencyForHighBoosting(),c.maxFrequencyForHighBoosting());
+			try
+			{
+				s.setFrequencyScaling(c.maxFrequencyForHighBoosting(), c.maxFrequencyForHighBoosting());
+			}
+			catch (Exception e)
+			{}
 		}
 	}
 	public void setDefault(){
