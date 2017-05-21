@@ -184,7 +184,7 @@ public class BoostingModesFragments extends Fragment {
 
     private void simulateSuccessProgress(final CircularProgressButton button) {
         ValueAnimator widthAnimation = ValueAnimator.ofInt(1, 100);
-        widthAnimation.setDuration(1500);
+        widthAnimation.setDuration(1750);
         widthAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
         widthAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
@@ -195,6 +195,7 @@ public class BoostingModesFragments extends Fragment {
         });
         widthAnimation.start();
     }
+	
 	private void saveDefaultFreqs(){
 		d.saveDefaultMinFreq(d.defaultMinFreq());
 		d.saveDefaultMaxFreq(d.defaultMaxFreq());

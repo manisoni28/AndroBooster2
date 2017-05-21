@@ -1,7 +1,6 @@
 package com.emre.androbooster;
 
 import android.app.Activity;
-import android.app.NotificationManager;
 import android.content.Intent;
 import android.os.Bundle;
 import com.emre.androbooster.boosterengine.BoosterService;
